@@ -135,12 +135,9 @@ async function publishPackage(dir, config, version) {
     }
     await run(
         dir,
-        'yarn',
+        'npm',
         'publish',
-        config.publishDir,
-        '--non-interactive',
-        '--new-version',
-        version
+        config.publishDir
     );
 
     console.log('Version has been published successfully:', version);
