@@ -1,8 +1,10 @@
 name: Publish to npm
-author: pascalgn
+author: tterb
 description: Automatically publish new versions to npm
 
 inputs:
+  pre-publish:
+    description: The script that will execute prior to publishing
   commit_pattern:
     description: The pattern that matches version update commits.
     required: false
