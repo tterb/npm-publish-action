@@ -21,6 +21,7 @@ async function main() {
     }
 
     const prePublish = getEnv('PRE_PUBLISH') || '';
+    const publishDir = getEnv('PUBLISH_DIR') || '.';
     const commitPattern =
         getEnv('COMMIT_PATTERN') || '^(?:Release|Version) (\\S+)';
     const { name, email } = eventObj.repository.owner;
@@ -136,6 +137,7 @@ async function publishPackage(dir, config, version) {
         dir,
         'yarn',
         'publish',
+        config.publishDir,
         '--non-interactive',
         '--new-version',
         version

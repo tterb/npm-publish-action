@@ -5,6 +5,10 @@ description: Automatically publish new versions to npm
 inputs:
   pre-publish:
     description: The script that will execute prior to publishing
+    required: false
+  publish-dir:
+    description: The directory that will be published
+    required: false
   commit_pattern:
     description: The pattern that matches version update commits.
     required: false
