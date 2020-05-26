@@ -127,7 +127,7 @@ async function createTag(dir, config, version) {
 }
 
 async function publishPackage(dir, config, version) {
-    if (config.prePublish.length()) {
+    if (config.prePublish.length) {
         await run(
             dir,
             ...config.prePublish.split(' '),
