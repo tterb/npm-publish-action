@@ -27,6 +27,7 @@ async function main() {
     const { name, email } = eventObj.repository.owner;
     const config = {
         prePublish,
+        publishDir,
         commitPattern,
         tagName: placeholderEnv('TAG_NAME', 'v%s'),
         tagMessage: placeholderEnv('TAG_MESSAGE', 'v%s'),
