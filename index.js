@@ -22,6 +22,7 @@ async function main() {
 
     const prePublish = getEnv('PRE_PUBLISH') || '';
     const publishDir = getEnv('PUBLISH_DIR') || '.';
+    const createTag = getEnv('CREATE_TAG') || '.';
     const commitPattern =
         getEnv('COMMIT_PATTERN') || '^(?:Release|Version) (\\S+)';
     const { name, email } = eventObj.repository.owner;
@@ -29,6 +30,7 @@ async function main() {
         prePublish,
         publishDir,
         commitPattern,
+        createTag,
         tagName: placeholderEnv('TAG_NAME', 'v%s'),
         tagMessage: placeholderEnv('TAG_MESSAGE', 'v%s'),
         tagAuthor: { name, email }
@@ -67,7 +69,9 @@ async function processDirectory(dir, config, commits) {
 
     checkCommit(config, commits, version);
 
-    await createTag(dir, config, version);
+    if(config.createTag) {
+        await createTag(dir, config, version);
+    }
     await publishPackage(dir, config, version);
 
     console.log('Done.');
@@ -139,7 +143,7 @@ async function publishPackage(dir, config, version) {
         'yarn',
         'publish',
         config.publishDir,
-        "--non-interactive"
+        '--non-interactive'
     );
 
     console.log('Version has been published successfully:', version);

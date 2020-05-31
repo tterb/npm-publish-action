@@ -9,5 +9,8 @@
     "npm-publish-action": "./index.js"
   },
   "scripts": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "tterb-test-package": "^1.0.2"
+  }
 }

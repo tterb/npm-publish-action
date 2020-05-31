@@ -9,6 +9,9 @@ inputs:
   publish-dir:
     description: The directory that will be published
     required: false
+  create-tag:
+    description: Determines whether a new tag is created
+    required: false
   commit_pattern:
     description: The pattern that matches version update commits.
     required: false
